@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Button, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Animated,  Easing} from 'react-native'; 
+
 
 function HomeScreen({ navigation }) {
   return (
@@ -16,7 +18,7 @@ function HomeScreen({ navigation }) {
             onPress={() => navigation.navigate('Profile')}
           />
           <Button
-            title="My Coool"
+            title="My Cogit l"
             onPress={() => navigation.navigate('MyCourses')}
           />
           <Button
@@ -77,6 +79,39 @@ function MyEvents() {
 
 
 const Stack = createStackNavigator();
+const FadeInView = (props) => {
+  const fadeAnim = useRef(new Animated.Value(0)).current  // Initial value for opacity:
+
+  useEffect(() => {
+    Animated.timing(
+      fadeAnim,
+      {
+        toValue: 1,
+        duration: 10000,
+      }
+    ).start();
+  }, [fadeAnim])
+
+  return (
+    <Animated.View                 // Special animatable View
+      style={{
+        ...props.style,
+        opacity: fadeAnim,         // Bind opacity to animated value
+      }}
+    >
+      {props.children}
+    </Animated.View>
+  );
+}
+export default () => {
+  return (
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <FadeInView style={{width: 250, height: 50, backgroundColor: 'powderblue'}}>
+        <Text style={{fontSize: 28, textAlign: 'center', margin: 10}}>University Student Life</Text>
+      </FadeInView>
+    </View>
+  )
+}
 
 function App() {
   return (
