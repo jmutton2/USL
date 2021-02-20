@@ -16,7 +16,7 @@ function HomeScreen({ navigation }) {
             onPress={() => navigation.navigate('Profile')}
           />
           <Button
-            title="My Co"
+            title="My Coool"
             onPress={() => navigation.navigate('MyCourses')}
           />
           <Button
