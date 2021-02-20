@@ -2,6 +2,7 @@ import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { TouchableOpacity } from 'react-native';
 
 //Importing the pages
 import Settings from './UtilityTabs/SettingsTab.js';
@@ -82,9 +83,11 @@ const styles = StyleSheet.create({
     margin: 10,
     fontSize: 50,
     flex: 1, 
-    fontStyle: 'italic'
+    
 
   } 
+  
 
 })
+
 export default App;
