@@ -8,7 +8,7 @@ function HomeScreen({ navigation }) {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
       <Button
-        title="Go to Details"
+        title="Button"
         onPress={() => navigation.navigate('Details')}
       />
     </View>
