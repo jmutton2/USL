@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
-import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { firebase } from './config.js'
+import React, { useState } from 'react';
+import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 import styles from './styles';
+import { firebase } from './config.js';
+
+export function signedOn(cond) {
+    return this.temp = cond;
+}
 
 export default function RegistrationScreen({navigation}) {
     const [fullName, setFullName] = useState('')
@@ -11,7 +16,7 @@ export default function RegistrationScreen({navigation}) {
     const [confirmPassword, setConfirmPassword] = useState('')
 
     const onFooterLinkPress = () => {
-        navigation.navigate('Login')
+        navigation.navigate('LoginScreen')
     }
 
     const onRegisterPress = () => {
@@ -34,8 +39,10 @@ export default function RegistrationScreen({navigation}) {
                     .doc(uid)
                     .set(data)
                     .then(() => {
-                        //navigation.navigate('HomeScreen1', {user: data})
-                    })
+                    signedOn(true);
+                    navigation.navigate('SignedIn', {user: data})
+                    
+                })
                     .catch((error) => {
                         alert(error)
                     });
