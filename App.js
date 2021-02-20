@@ -1,134 +1,90 @@
 import * as React from 'react';
-import { Button, View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { Animated,  Easing} from 'react-native'; 
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+//Importing the pages
+import Settings from './UtilityTabs/SettingsTab.js';
+import Profile from './UtilityTabs/ProfileTab.js';
+import MyEvents from './UtilityTabs/MyEventsTab.js';
+import MyClubs from './UtilityTabs/MyClubsTab.js';
+import MyCourses from './UtilityTabs/MyCoursesTab.js';
+import FadeInView from './UtilityTabs/Fade.js';
 
 
-function HomeScreen({ navigation }) {
+function HomeScreen() {
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'flex-end' }}>
-      <View style={{flexDirection: 'row', padding: 5, maxWidth: 450}}>
-          <Button
-            title="Set"
-            onPress={() => navigation.navigate('Settings')}
-          />
-          <Button
-            title="Prof"
-            onPress={() => navigation.navigate('Profile')}
-          />
-          <Button
-            title="My Cogit l"
-            onPress={() => navigation.navigate('MyCourses')}
-          />
-          <Button
-            title="My Cl"
-            onPress={() => navigation.navigate('MyClubs')}
-          />
-          <Button
-            title="My Ev"
-            onPress={() => navigation.navigate('MyEvents')}
-          />
-        </View>
-      </View>
-  );
-}
-
-function Settings() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Settings screen</Text>
-    </View>
-  );
-}
-
-function Profile() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Here is my profile</Text>
-    </View>
-  );
-}
-
-function MyCourses() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>
-        List and drop down of courses, can edit picture option. 
-        Can take picture from here
-      </Text>
-    </View>
-  );
-}
-
-function MyClubs() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>List and drop down of clubs</Text>
-    </View>
-  );
-}
-
-function MyEvents() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>List view of my events</Text>
+    <View style = {styles.container}>
+      <FadeInView >
+            <Text>USL</Text>
+        </FadeInView>
     </View>
   );
 }
 
 
-const Stack = createStackNavigator();
-const FadeInView = (props) => {
-  const fadeAnim = useRef(new Animated.Value(0)).current  // Initial value for opacity:
-
-  useEffect(() => {
-    Animated.timing(
-      fadeAnim,
-      {
-        toValue: 1,
-        duration: 10000,
-      }
-    ).start();
-  }, [fadeAnim])
-
+function settingsTab() {
   return (
-    <Animated.View                 // Special animatable View
-      style={{
-        ...props.style,
-        opacity: fadeAnim,         // Bind opacity to animated value
-      }}
-    >
-      {props.children}
-    </Animated.View>
-  );
-}
-export default () => {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <FadeInView style={{width: 250, height: 50, backgroundColor: 'powderblue'}}>
-        <Text style={{fontSize: 28, textAlign: 'center', margin: 10}}>University Student Life</Text>
-      </FadeInView>
-    </View>
+    <Settings />
   )
 }
+
+function profileTab() {
+  return (
+    <Profile />
+  )
+}
+
+function myCoursesTab() {
+  return (
+    <MyCourses />
+  )
+}
+
+function myClubsTab() {
+  return (
+    <MyClubs />
+  )
+}
+function myEventsTab() {
+  return (
+    <MyEvents />
+  )
+}
+
+
+
+const Tab = createBottomTabNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Settings" component={Settings} />
-        <Stack.Screen name="Profile" component={Profile} />
-        <Stack.Screen name="MyCourses" component={MyCourses} />
-        <Stack.Screen name="MyClubs" component={MyClubs} />
-        <Stack.Screen name="MyEvents" component={MyEvents} />
-
-      </Stack.Navigator>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Settings" component={settingsTab} />
+        <Tab.Screen name="Profile" component={profileTab} />
+        <Tab.Screen name="MyCourses" component={myCoursesTab} />
+        <Tab.Screen name="MyClubs" component={myClubsTab} />
+        <Tab.Screen name="MyEvents" component={myEventsTab} />
+      </Tab.Navigator>
     </NavigationContainer>
 
-    
+
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    width: 350, 
+    height: 50,
+    justifyContent: 'center', 
+    alignItems: 'center',
+    backgroundColor: 'powderblue', 
+    margin: 10,
+    fontSize: 50,
+    flex: 1, 
+    fontStyle: 'italic'
 
+  } 
+
+})
 export default App;
