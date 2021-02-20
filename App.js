@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { TouchableOpacity } from 'react-native';
 
 //Importing the pages
 import Settings from './UtilityTabs/SettingsTab.js';
@@ -9,11 +10,14 @@ import Profile from './UtilityTabs/ProfileTab.js';
 import Calendar from './UtilityTabs/CalendarTab.js';
 import MyClubs from './UtilityTabs/MyClubsTab.js';
 import MyCourses from './UtilityTabs/MyCoursesTab.js';
+import FadeInView from './UtilityTabs/Fade.js';
 
 function HomeScreen() {
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home</Text>
+    <View style = {styles.container}>
+      <FadeInView >
+            <Text>USL</Text>
+        </FadeInView>
     </View>
   );
 }
@@ -72,5 +76,18 @@ function App() {
     </NavigationContainer>
   );
 }
+    
+const styles = StyleSheet.create({
+  container: {
+    width: 350, 
+    height: 50,
+    justifyContent: 'center', 
+    alignItems: 'center',
+    backgroundColor: 'powderblue', 
+    margin: 10,
+    fontSize: 50,
+    flex: 1, 
+  } 
+});
 
 export default App;
