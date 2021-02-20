@@ -1,7 +1,14 @@
-import * as React from 'react';
+import 'react-native-gesture-handler';
 import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React, { useEffect, useState } from 'react';
+import { firebase } from './src/firebase/config';
+import { LoginScreen, HomeScreen, RegistrationScreen } from './src/screens';
+import { createStackNavigator } from '@react-navigation/stack';
+import {decode, encode} from 'base-64';
+if (!global.btoa) {  global.btoa = encode }
+if (!global.atob) { global.atob = decode }
 
 //Importing the pages
 import Settings from './UtilityTabs/SettingsTab.js';
@@ -10,7 +17,7 @@ import MyEvents from './UtilityTabs/MyEventsTab.js';
 import MyClubs from './UtilityTabs/MyClubsTab.js';
 import MyCourses from './UtilityTabs/MyCoursesTab.js';
 
-function HomeScreen() {
+function HomeScreen1() {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home</Text>
@@ -51,21 +58,68 @@ function myEventsTab() {
 
 const Tab = createBottomTabNavigator();
 
-function App() {
+const Stack = createStackNavigator();
+
+
+export default function App() {
+
+  const [loading, setLoading] = useState(true)
+  const [user, setUser] = useState(null)
+
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Home" component={HomeScreen1} />
         <Tab.Screen name="Settings" component={settingsTab} />
         <Tab.Screen name="Profile" component={profileTab} />
         <Tab.Screen name="MyCourses" component={myCoursesTab} />
         <Tab.Screen name="MyClubs" component={myClubsTab} />
         <Tab.Screen name="MyEvents" component={myEventsTab} />
+        <Tab.Screen name="Login" component={LoginScreen} />
+        <Tab.Screen name="Registration" component={RegistrationScreen} />
       </Tab.Navigator>
+      {/* <Stack.Navigator>
+        { user ? (
+          <Stack.Screen name="Home">
+            {props => <HomeScreen {...props} extraData={user} />}
+          </Stack.Screen>
+        ) : (
+          <>
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Registration" component={RegistrationScreen} />
+          </>
+        )}
+      </Stack.Navigator> */}
     </NavigationContainer>
+    
 
     
   );
+  if (loading) {
+    return (
+      <></>
+    
+    )
+  }
+  useEffect(() => {
+    const usersRef = firebase.firestore().collection('users');
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        usersRef
+          .doc(user.uid)
+          .get()
+          .then((document) => {
+            const userData = document.data()
+            setLoading(false)
+            setUser(userData)
+          })
+          .catch((error) => {
+            setLoading(false)
+          });
+      } else {
+        setLoading(false)
+      }
+    });
+  }, []);
 }
 
-export default App;
