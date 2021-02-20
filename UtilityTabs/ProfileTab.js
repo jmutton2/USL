@@ -9,7 +9,7 @@ function profile() {
         <View style={styles.container}>
           <Image
             style={styles.profilePic}
-            source={require('./default_profile.png')}
+            source={require('../assets/default_profile.png')}
           /> 
           <Text style={{ fontSize: 40 }}>Name</Text>
           <Text style={{ fontSize: 13, paddingLeft:30, paddingRight:30 }}>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
