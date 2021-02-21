@@ -1,15 +1,21 @@
-import React, { useState } from 'react'
-import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { firebase } from './config'
+
+import React, { useState } from 'react';
+import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { firebase } from './config';
 import styles from './styles';
 
-export default function LoginScreen({navigation}) {
+
+export function signedOn(cond) {
+    return this.temp = cond;
+}
+
+export default function LoginScreen({ navigation }) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const onFooterLinkPress = () => {
-        navigation.navigate('Registration')
+        navigation.navigate('RegistrationScreen')
     }
 
     const onLoginPress = () => {
@@ -23,13 +29,12 @@ export default function LoginScreen({navigation}) {
                     .doc(uid)
                     .get()
                     .then(firestoreDocument => {
-                        if (!firestoreDocument.exists) {
+                         if (!firestoreDocument.exists) {
                             alert("Ummm...user does not exist anymore.")
                             return;
                         }
                         const user = firestoreDocument.data()
-                        navigation.navigate('Home', {user})
-                        
+                        navigation.replace('SignedIn', {user})   
                     })
                     .catch(error => {
                         alert(error)
@@ -43,7 +48,7 @@ export default function LoginScreen({navigation}) {
     return (
         <View style={styles.container}>
             <KeyboardAwareScrollView
-                style={{ flex: 1, width: '50%' }}
+                style={{ flex: 1, width: '80%' }}
                 keyboardShouldPersistTaps="always">
                 <Image
                     style={styles.logo}
@@ -79,4 +84,5 @@ export default function LoginScreen({navigation}) {
             </KeyboardAwareScrollView>
         </View>
     )
+
 }

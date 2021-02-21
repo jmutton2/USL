@@ -1,8 +1,14 @@
-import React, { useState } from 'react'
-import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { firebase } from './config.js'
+
+import React, { useState } from 'react';
+import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 import styles from './styles';
+import { firebase } from './config.js';
+
+export function signedOn(cond) {
+    return this.temp = cond;
+}
 
 export default function RegistrationScreen({navigation}) {
     const [fullName, setFullName] = useState('')
@@ -11,7 +17,7 @@ export default function RegistrationScreen({navigation}) {
     const [confirmPassword, setConfirmPassword] = useState('')
 
     const onFooterLinkPress = () => {
-        navigation.navigate('Login')
+        navigation.navigate('LoginScreen')
     }
 
     const onRegisterPress = () => {
@@ -34,8 +40,10 @@ export default function RegistrationScreen({navigation}) {
                     .doc(uid)
                     .set(data)
                     .then(() => {
-                        navigation.navigate('Home', {user: data})
-                    })
+                    signedOn(true);
+                    navigation.navigate('SignedIn', {user: data})
+                    
+                })
                     .catch((error) => {
                         alert(error)
                     });
@@ -48,7 +56,7 @@ export default function RegistrationScreen({navigation}) {
     return (
         <View style={styles.container}>
             <KeyboardAwareScrollView
-                style={{ flex: 1, width: '50%' }}
+                style={{ flex: 1, width: '80%' }}
                 keyboardShouldPersistTaps="always">
                 <Image
                     style={styles.logo}
@@ -103,4 +111,5 @@ export default function RegistrationScreen({navigation}) {
             </KeyboardAwareScrollView>
         </View>
     )
+
 }

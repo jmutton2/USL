@@ -1,11 +1,17 @@
+
+
 import 'react-native-gesture-handler';
-import { View, Text } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+
+import { createRootNavigator } from './UtilityTabs/Router.js';
+
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import React, { useEffect, useState } from 'react';
-import { firebase } from './src/firebase/config';
-import { LoginScreen, HomeScreen, RegistrationScreen } from './src/screens';
+
+import {SignedIn, SignedOut} from './UtilityTabs/Router'
+
 import { createStackNavigator } from '@react-navigation/stack';
+<<<<<<< HEAD
 import {decode, encode} from 'base-64';
 if (!global.btoa) {  global.btoa = encode }
 if (!global.atob) { global.atob = decode }
@@ -63,10 +69,21 @@ function myEventsTab() {
 
 
 const Tab = createBottomTabNavigator();
+=======
+
+//Firebase imports
+//import { firebase } from './src/firebase/config';
+//import {decode, encode} from 'base-64';
+//if (!global.btoa) {  global.btoa = encode }
+//if (!global.atob) { global.atob = decode }
+
+
+>>>>>>> upstream/master
 
 const Stack = createStackNavigator();
 
 
+<<<<<<< HEAD
 export default function App() {
 
   const [loading, setLoading] = useState(true)
@@ -96,26 +113,51 @@ export default function App() {
       <></>
     
     )
-  }
-  useEffect(() => {
-    const usersRef = firebase.firestore().collection('users');
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        usersRef
-          .doc(user.uid)
-          .get()
-          .then((document) => {
-            const userData = document.data()
-            setLoading(false)
-            setUser(userData)
-          })
-          .catch((error) => {
-            setLoading(false)
-          });
-      } else {
-        setLoading(false)
-      }
-    });
-  }, []);
-}
+=======
 
+export default class App extends React.Component {
+
+
+  state = {
+    signedIn: false,
+    checkSignIn: false
+  };
+
+
+  componentDidUpdate() {
+    this.setState({signedIn:!signedIn})
+>>>>>>> upstream/master
+  }
+
+
+  render() {
+    let initialRouteNameD = this.state.signedIn ? "SignedIn" : "SignedOut"
+    const Layout = createRootNavigator(this.state.signedIn);
+
+    //'context' >> to pass data from one screen to the next
+
+    return ( 
+          <NavigationContainer>
+            <Stack.Navigator initialRouteName={initialRouteNameD}>
+                <Stack.Screen name="SignedIn" component={SignedIn}/>
+                <Stack.Screen name="SignedOut" component={SignedOut}/>
+            </Stack.Navigator>
+          </NavigationContainer>
+
+)
+  }
+};
+
+const styles = StyleSheet.create({
+  container: {
+    width: 350, 
+    height: 50,
+    justifyContent: 'center', 
+    alignItems: 'center',
+    backgroundColor: 'powderblue', 
+    margin: 10,
+    fontSize: 50,
+    flex: 1, 
+  } 
+
+});
