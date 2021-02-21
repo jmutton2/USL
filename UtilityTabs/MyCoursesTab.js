@@ -22,7 +22,6 @@ const myCourses = () => {
       )
     }
 
-
     return (
       <div className="myCourses">
       <ReactBootStrap.Table striped bordered hover>

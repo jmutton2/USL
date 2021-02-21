@@ -32,26 +32,16 @@ export function SignedIn(props) {
 
         return (
             <Tab.Navigator >
-                <Tab.Screen  name="Hom" component={HomeScreen1}/>
-                <Tab.Screen  name="set" component={Settings}/>
-                <Tab.Screen  name="pro" component={Profile}/>
-                <Tab.Screen  name="myCo" component={MyCourses}/>
-                <Tab.Screen  name="myCl" component={MyClubs}/>
-                <Tab.Screen  name="cal" component={calendar}/>
+                <Tab.Screen  name="Home" component={HomeScreen1} />
+                <Tab.Screen  name="Settings" component={Settings}/>
+                <Tab.Screen  name="Profile" component={Profile}/>
+                <Tab.Screen  name="Courses" component={MyCourses}/>
+                <Tab.Screen  name="Clubs" component={MyClubs}/>
+                <Tab.Screen  name="Calender" component={calendar}/>
             </Tab.Navigator>
         )
 }
 
 export const createRootNavigator = (signedIn = false) => {
-
-
-    // return (
-    //     // <NavigationContainer>
-    //     //     <Stack.Navigator initialRouteName={initialRouteNameD}>
-    //     //         <Stack.Screen name="SignedIn" component={SignedIn}/>
-    //     //         <Stack.Screen name="SignedOut" component={SignedOut}/>
-    //     //     </Stack.Navigator>
-    //     // </NavigationContainer>
-    // )
 }
 
