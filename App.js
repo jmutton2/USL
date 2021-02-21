@@ -3,7 +3,6 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 import { createRootNavigator } from './UtilityTabs/Router.js';
-import { isSignedIn } from './UtilityTabs/auth';
 
 import { NavigationContainer } from '@react-navigation/native';
 
