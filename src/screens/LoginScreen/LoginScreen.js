@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -47,7 +48,7 @@ export default function LoginScreen({ navigation }) {
     return (
         <View style={styles.container}>
             <KeyboardAwareScrollView
-                style={{ flex: 1, width: '50%' }}
+                style={{ flex: 1, width: '80%' }}
                 keyboardShouldPersistTaps="always">
                 <Image
                     style={styles.logo}
@@ -83,4 +84,5 @@ export default function LoginScreen({ navigation }) {
             </KeyboardAwareScrollView>
         </View>
     )
+
 }

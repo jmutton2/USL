@@ -1,10 +1,15 @@
+
+
 import 'react-native-gesture-handler';
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 import { createRootNavigator } from './UtilityTabs/Router.js';
+
 import { NavigationContainer } from '@react-navigation/native';
+
 import {SignedIn, SignedOut} from './UtilityTabs/Router'
+
 import { createStackNavigator } from '@react-navigation/stack';
 
 //Firebase imports
@@ -41,7 +46,6 @@ export default class App extends React.Component {
 
     return ( 
           <NavigationContainer>
-            
             <Stack.Navigator initialRouteName={initialRouteNameD}>
                 <Stack.Screen name="SignedIn" component={SignedIn}/>
                 <Stack.Screen name="SignedOut" component={SignedOut}/>
@@ -63,4 +67,5 @@ const styles = StyleSheet.create({
     fontSize: 50,
     flex: 1, 
   } 
+
 });

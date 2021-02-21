@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import { View, Text, Image, StyleSheet, TouchableHighlight, YellowBox, Button } from 'react-native';
 
@@ -18,10 +19,6 @@ function profile() {
             laboris nisi ut aliquip ex ea commodo consequat. 
             "</Text>
         </View>
-
-          <View style={{flex: 1, flexDirection: 'row', justifyContent:'flex-end'}}>
-            <Image style={styles.settingsBut} source={require('./cog_dark.png')} />
-          </View>
         </View>
       </View>
     )
@@ -43,15 +40,5 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
   },
-  settingsBut:{
-    marginTop:10,
-    marginRight:10,
-    width: 40,
-    height: 40,
-  },
-  online:{
-    position: 'absolute',
-    left:210,
-    top: 190,
-  }
+
 });

@@ -1,3 +1,4 @@
+
 import 'react-native-gesture-handler';
 import React from 'react';
 
@@ -5,6 +6,8 @@ import { SwitchNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
+
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 //Importing the pages
 import Settings from './SettingsTab.js';
@@ -32,12 +35,36 @@ export function SignedIn(props) {
 
         return (
             <Tab.Navigator >
-                <Tab.Screen  name="Hom" component={HomeScreen1}/>
-                <Tab.Screen  name="set" component={Settings}/>
-                <Tab.Screen  name="pro" component={Profile}/>
-                <Tab.Screen  name="myCo" component={MyCourses}/>
-                <Tab.Screen  name="myCl" component={MyClubs}/>
-                <Tab.Screen  name="cal" component={calendar}/>
+                <Tab.Screen  name="Hom" component={HomeScreen1}        
+                 options={{tabBarIcon: ({ color, size }) => (
+                    <MaterialCommunityIcons name="home" color={color} size={size} />
+                    ),
+                }}/>
+                <Tab.Screen  name="set" component={Settings}
+                options={{tabBarIcon: ({ color, size }) => (
+                    <MaterialCommunityIcons name="account-settings" color={color} size={size} />
+                    ),
+                }}/>
+                <Tab.Screen  name="pro" component={Profile}
+                options={{tabBarIcon: ({ color, size }) => (
+                    <MaterialCommunityIcons name="face-profile" color={color} size={size} />
+                    ),
+                }}/>
+                <Tab.Screen  name="myCo" component={MyCourses}
+                options={{tabBarIcon: ({ color, size }) => (
+                    <MaterialCommunityIcons name="newspaper-variant-outline" color={color} size={size} />
+                    ),
+                }}/>
+                <Tab.Screen  name="myCl" component={MyClubs}
+                options={{tabBarLabel: 'Home',tabBarIcon: ({ color, size }) => (
+                    <MaterialCommunityIcons name="book" color={color} size={size} />
+                    ),
+                }}/>
+                <Tab.Screen  name="cal" component={calendar}
+                options={{tabBarIcon: ({ color, size }) => (
+                    <MaterialCommunityIcons name="calendar" color={color} size={size} />
+                    ),
+                }}/>
             </Tab.Navigator>
         )
 }

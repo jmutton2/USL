@@ -1,16 +1,26 @@
 import React from 'react';
-import { View, Text, Styles } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import FadeInView from './Fade.js';
-//import MLcam from '../ML-ScheduleReader/main';
 
 function HomeScreen1() {
   return (
-    <View >
+    <View style={styles.mainTital} >
       <FadeInView >
-        <Text>USL</Text>
+        <Text style={{fontSize: 60}}>USL</Text>
       </FadeInView>
     </View>
   );
 }
 
 export default HomeScreen1;
+
+
+const styles = StyleSheet.create({
+  mainTital: {
+    fontWeight: 'bold',
+    marginTop: '70%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
+});
+
