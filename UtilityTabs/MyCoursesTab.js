@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -49,5 +50,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   }
+
 
 });
