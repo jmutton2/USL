@@ -57,7 +57,7 @@ export function SignedIn(props) {
                     ),
                 }}/>
                 <Tab.Screen  name="Clubs" component={MyClubs}
-                options={{tabBarLabel: 'Home',tabBarIcon: ({ color, size }) => (
+                options={{tabBarIcon: ({ color, size }) => (
                     <MaterialCommunityIcons name="book" color={color} size={size} />
                     ),
                 }}/>
