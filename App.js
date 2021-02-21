@@ -16,6 +16,10 @@ import Profile from './UtilityTabs/ProfileTab.js';
 import MyEvents from './UtilityTabs/MyEventsTab.js';
 import MyClubs from './UtilityTabs/MyClubsTab.js';
 import MyCourses from './UtilityTabs/MyCoursesTab.js';
+// import toggleCamera from'./src/screens/CameraScreen/camera.js'
+import CameraApp from './src/screens/CameraScreen/camera.js'
+
+
 
 function HomeScreen1() {
   return (
@@ -38,8 +42,10 @@ function profileTab() {
 }
 
 function myCoursesTab() {
+  
   return (
-    <MyCourses />
+    < CameraApp />
+    
   )
 }
 
@@ -65,6 +71,7 @@ export default function App() {
 
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState(null)
+  const [toggleCamera, setToggleCamera] = useState(true)
 
   return (
     <NavigationContainer>
@@ -78,18 +85,7 @@ export default function App() {
         <Tab.Screen name="Login" component={LoginScreen} />
         <Tab.Screen name="Registration" component={RegistrationScreen} />
       </Tab.Navigator>
-      {/* <Stack.Navigator>
-        { user ? (
-          <Stack.Screen name="Home">
-            {props => <HomeScreen {...props} extraData={user} />}
-          </Stack.Screen>
-        ) : (
-          <>
-            <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="Registration" component={RegistrationScreen} />
-          </>
-        )}
-      </Stack.Navigator> */}
+
     </NavigationContainer>
     
 
