@@ -1,3 +1,5 @@
+
+
 import 'react-native-gesture-handler';
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
@@ -65,4 +67,5 @@ const styles = StyleSheet.create({
     fontSize: 50,
     flex: 1, 
   } 
+
 });

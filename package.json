@@ -19,7 +19,6 @@
     "expo-status-bar": "~1.0.3",
     "firebase": "^8.2.9",
     "galio-framework": "^0.7.1",
-    "install-peerdeps": "^3.0.3",
     "react": "16.13.1",
     "react-bootstrap": "^1.5.0",
     "react-dom": "16.13.1",
@@ -30,6 +29,7 @@
     "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "3.1.9",
     "react-native-screens": "~2.15.2",
+    "react-native-vector-icons": "^8.0.0",
     "react-native-web": "~0.13.12",
     "react-navigation": "^4.4.3"
   },
