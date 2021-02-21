@@ -47,7 +47,7 @@ export default function LoginScreen({ navigation }) {
     return (
         <View style={styles.container}>
             <KeyboardAwareScrollView
-                style={{ flex: 1, width: '50%' }}
+                style={{ flex: 1, width: '80%' }}
                 keyboardShouldPersistTaps="always">
                 <Image
                     style={styles.logo}
