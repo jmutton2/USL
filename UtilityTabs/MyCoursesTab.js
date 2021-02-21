@@ -1,5 +1,10 @@
 
 import * as React from 'react';
+<<<<<<< HEAD
+import { View, Text } from 'react-native';
+// import { RNCamera } from 'react-native-camera';
+
+=======
 import { View, Text, Button, StyleSheet } from 'react-native';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as ReactBootStrap from "react-bootstrap";
@@ -22,9 +27,16 @@ const myCourses = () => {
         </tr>
       )
     }
+>>>>>>> upstream/master
 
 
     return (
+<<<<<<< HEAD
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>List view of my courses</Text>
+        
+      </View>
+=======
       <div className="myCourses">
       <ReactBootStrap.Table striped bordered hover>
         <thead>
@@ -39,11 +51,14 @@ const myCourses = () => {
         </tbody>
         </ReactBootStrap.Table>
       </div>
+>>>>>>> upstream/master
     )
 };
 
 export default myCourses;
 
+<<<<<<< HEAD
+=======
 const styles = StyleSheet.create({
   butt: {
     marginTop: '70%',
@@ -53,3 +68,4 @@ const styles = StyleSheet.create({
 
 
 });
+>>>>>>> upstream/master
