@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Styles } from 'react-native';
 import FadeInView from './Fade.js';
+//import MLcam from '../ML-ScheduleReader/main';
 
 function HomeScreen1() {
   return (
