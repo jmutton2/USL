@@ -36,32 +36,32 @@ export function SignedIn(props) {
 
         return (
             <Tab.Navigator >
-                <Tab.Screen  name="Hom" component={HomeScreen1}        
+                <Tab.Screen  name="Home" component={HomeScreen1}        
                  options={{tabBarIcon: ({ color, size }) => (
                     <MaterialCommunityIcons name="home" color={color} size={size} />
                     ),
                 }}/>
-                <Tab.Screen  name="set" component={Settings}
+                <Tab.Screen  name="Settings" component={Settings}
                 options={{tabBarIcon: ({ color, size }) => (
                     <MaterialCommunityIcons name="account-settings" color={color} size={size} />
                     ),
                 }}/>
-                <Tab.Screen  name="pro" component={Profile}
+                <Tab.Screen  name="Profile" component={Profile}
                 options={{tabBarIcon: ({ color, size }) => (
                     <MaterialCommunityIcons name="face-profile" color={color} size={size} />
                     ),
                 }}/>
-                <Tab.Screen  name="myCo" component={MyCourses}
+                <Tab.Screen  name="Courses" component={MyCourses}
                 options={{tabBarIcon: ({ color, size }) => (
                     <MaterialCommunityIcons name="newspaper-variant-outline" color={color} size={size} />
                     ),
                 }}/>
-                <Tab.Screen  name="myCl" component={MyClubs}
+                <Tab.Screen  name="Clubs" component={MyClubs}
                 options={{tabBarLabel: 'Home',tabBarIcon: ({ color, size }) => (
                     <MaterialCommunityIcons name="book" color={color} size={size} />
                     ),
                 }}/>
-                <Tab.Screen  name="cal" component={calendar}
+                <Tab.Screen  name="Calendar" component={calendar}
                 options={{tabBarIcon: ({ color, size }) => (
                     <MaterialCommunityIcons name="calendar" color={color} size={size} />
                     ),
